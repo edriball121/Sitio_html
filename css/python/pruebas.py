@@ -2,8 +2,10 @@ def isPrime(num):
     for i in range(2, num):
         if num % i == 0:
             primo = False
+            break
         else:
             primo = True
+    return primo
 
 print(isPrime(13))
 
