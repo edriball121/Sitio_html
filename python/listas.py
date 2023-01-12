@@ -1,3 +1,121 @@
+#---------------------------------------------------------------------------
+#1 Asignar nuevo valor a elemento de la lista
+numeros = [10, 5, 7, 2, 1]
+print("Contenido de la lista:", numeros) # imprimiendo contenido de la lista original.
+numeros[0]=111
+print ("Nuevo contenido de la lista: " , numeros)
+
+#---------------------------------------------------------------------------
+#2 copiar el valor de una posición en otra
+
+numeros[1] = numeros[4]
+
+#---------------------------------------------------------------------------
+#3 mostrar contenido / longitud de la lista
+
+numeros = [10, 5, 7, 2, 1]
+print("Contenido de la lista original:", numeros) # imprimiendo el contenido de la lista original
+
+numeros [0] = 111
+print("\nPrevio contenido de la lista:", numeros) # imprimiendo contenido de la lista anterior
+
+numeros [1] = numeros [4] # copiando el valor del quinto elemento al segundo
+print("Contenido de la lista anterior:", numeros) # imprimiendo contenido de la lista anterior
+
+print("\nLongitud de la lista:", len(numeros)) # imprimiendo la longitud de la lista
+
+
+#---------------------------------------------------------------------------
+#4 eliminar elementos de una lista
+numeros = [10, 5, 7, 2, 1]
+print("Contenido de la lista original:", numeros) # imprimiendo contenido de la lista original
+
+numeros[0] = 111
+print("\nPrevio contenido de la lista:", numeros) # imprimiendo contenido de la lista anterior
+
+numeros[1] = numeros[4] # copiando el valor del quinto elemento al segundo
+print("Contenido de la lista anterior:", numeros) # imprimiendo contenido de la lista anterior
+
+print ("\nLongitud de la lista:", len(numeros)) # imprimiendo la longitud de la lista anterior
+
+###
+
+del numeros[1] # eliminando el segundo elemento de la lista
+print("Longitud de la nueva lista:", len(numeros)) # imprimiendo nueva longitud de la lista
+print("\nNuevo contenido de la lista:", numeros) # imprimiendo el contenido de la lista actual
+
+del numeros[1]
+print(len(numeros))
+print(numeros) 
+
+
+
+#---------------------------------------------------------------------------
+#5 indices negativos
+
+numeros = [111, 7, 2, 1]
+print(numeros[-1])
+print(numeros[-2])
+
+
+#---------------------------------------------------------------------------
+#6 ejercicio practico
+
+listaSombrero = [1, 2, 3, 4, 5] # Esta es una lista existente de números ocultos en el sombrero.
+
+# Paso 1: escribe una línea de código que solicite al usuario
+# para reemplazar el número de en medio con un número entero ingresado por el usuario.
+
+listaSombrero[2] = int(input("Ingrese un numero entero "))
+
+# Paso 2: escribe aquí una línea de código que elimine el último elemento de la lista.
+
+del listaSombrero[4]
+
+# Paso 3: escribe aquí una línea de código que imprima la longitud de la lista existente.
+
+print ("La longitus es: ",len(listaSombrero))
+
+print(listaSombrero)
+
+#---------------------------------------------------------------------------
+#7 agregar elementos a una lista Append/insert
+numeros = [111, 7, 2, 1]
+print(len(numeros))
+print(numeros)
+
+###
+
+numeros.append(4)
+
+print(len(numeros))
+print(numeros)
+
+###
+
+numeros.insert(0,222)
+print(len(numeros))
+print(numeros)
+
+#
+numeros.insert(1,333)
+print(len(numeros))
+print(numeros)
+
+#---------------------------------------------------------------------------
+miLista = [] # creando una lista vacía
+miLista2 = []
+for i in range (5):
+    miLista.append (i + 1)
+
+print(miLista)
+#
+for i in range(5):
+    miLista2.insert(0, i + 1)
+
+print(miLista2)
+
+
 #-------------------------------------------------
 #20. Ejercicio lista
 miLista = [10, 1, 8, 3, 5]
