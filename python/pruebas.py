@@ -1,15 +1,11 @@
-def isPrime(num):
-    for i in range(2, num):
-        if num % i == 0:
-            primo = False
-            break
-        else:
-            primo = True
-    return primo
+miTupla = (1, 10, 100)
 
-print(isPrime(13))
+t1 = miTupla + (1000, 10000)
+t2 = miTupla * 3
 
-#for i in range(1, 20):
-#    if isPrime(i + 1):
-#        print(i + 1, end=" ")
-#print()
+print(len(t2))
+print(t1)
+print(t2)
+print(10 in miTupla)
+print(-10 not in miTupla)
+

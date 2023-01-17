@@ -269,26 +269,25 @@ for i in range(len(testYears)):
 # Debes utilizar las funciones previamente escritas y probadas. Agrega algunos 
 # casos de prueba al código. Esta prueba es solo el comienzo.
 
-def isYearLeap(year):#Determinar si un año es o no biciesto
+def dayOfYear(year, month, day):
+    #validar que la data ingresada sea valida
+    #validar año bisiesto
     if year % 4 == 0:
         if year % 100 == 0:
             if year % 400 == 0:
                 val = True
-                return val
+                print(val)
             else:
                 val = False
-                return val
+                print(val)
         else:
             val = True
-            return val
+            print(val)
     else:
-        val = False
-        return val
-
-anno = isYearLeap(1900)#almacenar la función en una variable
-
-def daysInMonth(month):#validar si el mes es de 30,31 ó 28,29 si es biciesto o no
-    if anno == True and month == 2:
+        val = False#fin validar año bisiesto
+        print(val)
+    #Validar cuantos dias tiene el mes / febrero de 28 o 29 si es o no biciesto
+    if val == True and month == 2:
         days=29
         print("Dias de: ", days)
     else:
@@ -297,26 +296,230 @@ def daysInMonth(month):#validar si el mes es de 30,31 ó 28,29 si es biciesto o 
             days = 30
             print("Dias de: ", days)
         #meses de 31
-        elif month == 1 or month == 3 or month == 5 or month == 8 or month == 7 or month == 10 or month == 12:
+        elif month == 1 or month == 3 or month == 5 or month == 7 or month == 8 or month == 10 or month == 12:
             days = 31
             print("Dias de: ", days)   
         else:
             days=28
             print("Dias de: ", days)
-    return days
+    #Validar total de dias
+    cantDias = [31,28,31,30,31,30,31,31,30,31,30,31] #definr lista con la cantidad de dias por mes
+    if days == 29 or val == True: #definir dia para mes biciesto
+        del(cantDias[1])
+        cantDias.insert(1, 29)
 
-#def dayOfYear(year, month, day):
-#
-# pon tu código nuevo aquí
-#
-
-#print(dayOfYear(2000, 12, 31))
-
-
-
+    for i in range(month-1):
+        totalDias += cantDias[i]
         
+    totalDias += day
+    print(totalDias)
+    return totalDias
+
+print("Total de dias: ", dayOfYear(2024, 3, 32))
+
+#------------------------------------------
+#4. función con parametros laboratorio final /es o no numero primo
+
+def isPrime(num):
+    primo = ""
+    for i in range(2, num):
+        if num % i == 0:
+            primo = False
+            break
+        else:
+            primo = True
+            break
+
+    return primo
+
+print(isPrime(11))
+
+for i in range(1, 20):
+    if isPrime(i + 1):
+        print(i + 1, end=" ")
+print()
 
 
+#------------------------------------------
+#4. función con parametros laboratorio final / convertir gasolina
+
+#El consumo de combustible de un automóvil se puede expresar de muchas maneras diferentes. 
+# Por ejemplo, en Europa, se muestra como la cantidad de combustible consumido por cada 100 kilómetros.
+#En los EE. UU., se muestra como la cantidad de millas recorridas por un automóvil con un galón de combustible.
+#Tu tarea es escribir un par de funciones que conviertan l/100km a mpg(milas por galón), y viceversa.
+
+#Las funciones:
+#Se llaman l100kmampg y mpgal100km respectivamente.
+#Toman un argumento (el valor correspondiente a sus nombres).
+#Complementa el código en el editor.
+#Ejecuta tu código y verifica si tu salida es la misma que la nuestra.
+#Aquí hay información para ayudarte:
+#1 milla = 1609.344 metros.
+#1 galón = 3.785411784 litros.
+#salida
+#60.31143162393162
+#31.36194444444444
+#23.52145833333333
+#3.9007393587617467
+#7.490910297239916
+#10.009131205673757
+
+
+def l100kmtompg(liters):
+    galon = liters*3.785411784
+    return galon
+def mpgtol100km(miles):
+    distancia = miles*1609.344
+    return distancia
+
+
+print(l100kmtompg(3.9))
+print(l100kmtompg(7.5))
+print(l100kmtompg(10.))
+print(mpgtol100km(60.3))
+print(mpgtol100km(31.4))
+print(mpgtol100km(23.5))
+
+#------------------------------------------
+#4. función con variables globales    
+def miFuncion():
+    global var
+    var = 2
+    print("¿Conozco a aquella variable?", var)
+
+var = 1
+miFuncion()
+print(var)
+
+#------------------------------------------
+#4. función asignar valores a variables y/o listas fuera de la función   
+def miFuncion(miLista1):
+    print(miLista1)
+    del miLista1[0]
+
+miLista2 = [2, 3]
+miFuncion(miLista2)
+print(miLista2)
+
+#------------------------------------------
+#4. función IMC
+
+def piespulgam(pies, pulgadas = 0.0):
+    return pies * 0.3048 + pulgadas * 0.0254
+
+
+def lbsakg(lb):
+    return lb * 0.45359237
+
+
+def imc(peso, altura):
+    #el \ significa que el codigo continua en la proxima linea
+    if altura < 1.0 or altura > 2.5 or \
+    peso < 20 or peso > 200:
+        return None
+    
+    return peso / altura ** 2
+
+
+print(imc(peso = lbsakg(176), altura = piespulgam(5, 7)))
+
+
+#------------------------------------------
+#4. función triangulo
+
+
+def esUnTriangulo (a, b, c):
+    return a + b > c and b + c > a and c + a > b
+
+print(esUnTriangulo (1, 1, 1))
+print(esUnTriangulo (1, 1, 3))
+
+def esUnTrianguloRectangulo(a, b, c):
+    if not esUnTriangulo  (a, b, c):
+        return False
+    if c > a and c > b:
+        return c ** 2 == a ** 2 + b ** 2
+    if a > b and a > c:
+        return a ** 2 == b ** 2 + c ** 2
+
+print(esUnTrianguloRectangulo(5, 3, 4))
+print(esUnTrianguloRectangulo(1, 3, 4))
+
+
+
+#------------------------------------------
+#4. función triangulo 2da parte
+
+def esUnTriangulo(a, b, c):
+    return a + b > c and b + c > a and c + a > b
+
+def heron(a, b, c):
+    p = (a + b + c) / 2
+    return (p * (p - a) * (p - b) * (p - c)) ** 0.5
+
+def campoTriangulo(a, b, c):
+    if not esUnTriangulo(a, b, c):
+        return None
+    return heron(a, b, c)
+
+print(campoTriangulo(1., 1., 2. ** .5))
+
+
+#------------------------------------------
+#4. función factoriales
+def factorialFun(n):
+    if n < 0:
+        return None
+    if n < 2:
+        return 1
+    
+    producto = 1
+    for i in range(2, n + 1):
+        producto *= i
+    return producto
+
+for n in range(1, 6): # probando
+    print(n, factorialFun(n))
+
+
+#------------------------------------------
+#4. función fibonasi
+def fib(n):
+    if n < 1:
+         return None
+    if n < 3:
+        return 1
+
+    elem1 = elem2 = 1
+    sum = 0
+    for i in range(3, n + 1):
+        sum = elem1 + elem2
+        elem1, elem2 = elem2, sum
+    return sum
+
+for n in range(1, 10): # probando
+    print(n, "->", fib(n))
+
+#------------------------------------------
+#4. función fibonasi 2do metodo
+
+def factorialFun(n):
+    if n < 0:
+        return None
+    if n < 2:
+        return 1
+    return n * factorialFun(n - 1)
+
+#------------------------------------------
+#4. función recursividad
+# Implementación recursiva de la función factorial
+def factorial(n):
+    if n == 1:    # la condición de terminación
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+print(factorial(4)) # 4 * 3 * 2 * 1 = 24
 
 #https://edube.org/learn/programming-essentials-in-python-part-1-spanish/laboratorio-d-iacute-a-del-a-ntilde-o-escribiendo-y-utilizando-tus-propias-funciones
 
