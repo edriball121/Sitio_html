@@ -1,11 +1,21 @@
-miTupla = (1, 10, 100)
+grupo = {}
 
-t1 = miTupla + (1000, 10000)
-t2 = miTupla * 3
-
-print(len(t2))
-print(t1)
-print(t2)
-print(10 in miTupla)
-print(-10 not in miTupla)
-
+while True:
+    nombre = input("Ingresa el nombre del estudiante (o exit para detenerse): ")
+    if nombre == 'exit':
+        break
+    
+    calif = int(input("Ingresa la calificación del alumno (0-10): "))
+    
+    if nombre in grupo:
+        grupo[nombre] += (calif,)
+    else:
+        grupo[nombre] = (calif,)
+        
+for nombre in sorted(grupo.keys()):
+    sum = 0
+    contador = 0
+    for calif in grupo[nombre]:
+        sum += calif
+        contador += 1
+    print(nombre, ":", sum / contador)
