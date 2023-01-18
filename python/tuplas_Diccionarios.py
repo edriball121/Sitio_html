@@ -213,7 +213,7 @@ polEspDict = {
     }
 
 elemento1 = polEspDict["gleba"]    # ejemplo 1
-print(elmento1)    # salida: tierra
+print(elemento1)    # salida: tierra
 
 elemento2 = polEspDict.get("woda")
 print(elemento2)    # salida: agua
@@ -241,7 +241,7 @@ print(miDirectorioTelefonico)    # salida: {}
 #------------------------------------------
 polEspDict = {"kwiat" : "flor"}
 
-polEspDict = update("gleba" : "tierra")
+polEspDict = update({"gleba" : "tierra"})
 print(polEspDict)    # salida: {'kwiat' : 'flor', 'gleba' : 'tierra'}
 
 polEspDict.popitem()
